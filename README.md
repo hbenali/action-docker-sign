@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: Check out the repository
-          uses: actions/checkout@v4
+          uses: actions/checkout@v6
         - name: Login to DockerHub
           uses: docker/login-action@v3
           with:
@@ -90,7 +90,7 @@ jobs:
 
         steps:
             - name: Check out the repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
             - name: Login to DockerHub
               uses: docker/login-action@v3
               with:
@@ -399,6 +399,8 @@ When you have one of the errors:
 ```sh
 # Purge the contents
 notary -d ~/.docker/trust/ -s https://notary.docker.io delete --remote --verbose docker.io/botsudo/action-docker-compose
+# Or
+notary -s https://notary.docker.io -d ~/.docker/trust/ delete docker.io/botsudo/action-docker-compose
 
 # Check key list
 notary -d ~/.docker/trust/ -s https://notary.docker.io key list
